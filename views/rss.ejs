@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" media="screen" href="rss2full.xsl"?>
+<%
+/* https://www.topcoder.com/wp-content/themes/tcs-responsive/css/rss2full.xsl*/
+%>
+<rss version="2.0"
+     xmlns:content="http://purl.org/rss/1.0/modules/content/"
+     xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+     xmlns:dc="http://purl.org/dc/elements/1.1/"
+     xmlns:atom="http://www.w3.org/2005/Atom"
+     xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+     xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+    >
+    <channel>
+      <title>topcoder - Challenges</title>
+      <atom:link href="<%= sourceURL %>" rel="self" type="application/rss+xml"/>
+      <link><%= sourceLink %></link>
+      <description>let&#039;s build it</description>
+      <sy:updatePeriod>hourly</sy:updatePeriod>
+      <sy:updateFrequency>1</sy:updateFrequency><%
+	  if(rssData) {
+		for(var i=0; i<rssData.length; i++) {%>
+		<item>
+          <title><%= rssData[i].title %></title>
+          <link><%= rssData[i].link %></link>
+          <pubDate><%= rssData[i].pubDate %></pubDate>
+          <guid><%= rssData[i].guid %></guid>        
+        </item><%
+		}
+	  }
+	  %>
+	</channel>
+</rss>
